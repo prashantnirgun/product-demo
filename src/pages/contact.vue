@@ -1,11 +1,11 @@
 <template>
   <div>
-    <q-markdown :src="markdown" toc="true" no-emoji="false" />
+    <q-markdown :src="markdown" toc="true" no-emoji="false" class="q-ma-sm" />
   </div>
 </template>
 
 <script>
-import markdown from "src/assets/README.md";
+import markdown from "src/assets/contact.md";
 
 export default {
   data() {

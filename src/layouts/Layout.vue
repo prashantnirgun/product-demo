@@ -23,7 +23,7 @@
           class="row items-center no-wrap"
         >
           <q-avatar square>
-            <img src="img/logo.jpg" />
+            <img src="images/logo.jpg" />
           </q-avatar>
           <span class="q-ml-sm">{{ siteName }}</span>
         </q-toolbar-title>

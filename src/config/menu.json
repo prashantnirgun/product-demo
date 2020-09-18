@@ -99,6 +99,12 @@
     ]
   },
   {
+    "label": "FAQ",
+    "icon": "help_outline",
+    "to": "/faq",
+    "level": 1
+  },
+  {
     "label": "Contact Us",
     "icon": "location_on",
     "to": "/contact",
