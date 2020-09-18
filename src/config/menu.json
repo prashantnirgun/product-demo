@@ -2,7 +2,7 @@
   {
     "label": "Dashboard",
     "icon": "home",
-    "to": "/dashboard",
+    "to": "/test",
     "level": 1
   },
   {
