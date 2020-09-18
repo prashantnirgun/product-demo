@@ -7,19 +7,20 @@
     :width="280"
   >
     <q-scroll-area class="fit">
-      <q-list padding class="text-grey-8">
+      <sidebar-menu :model="root" depth="0" />
+      <!-- <q-list padding class="text-grey-8">
         <q-item
           class="GNL__drawer-item"
           v-ripple
-          v-for="link in links1"
-          :key="link.text"
+          v-for="link in root"
+          :key="link.label"
           clickable
         >
           <q-item-section avatar>
             <q-icon :name="link.icon" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>{{ link.text }}</q-item-label>
+            <q-item-label>{{ link.label }}</q-item-label>
           </q-item-section>
         </q-item>
 
@@ -80,7 +81,7 @@
             >
           </div>
         </div>
-      </q-list>
+      </q-list> -->
     </q-scroll-area>
   </q-drawer>
 </template>
@@ -91,8 +92,12 @@ import root from "src/config/menu.json";
 
 export default {
   props: ["leftDrawerOpen"],
+  components: {
+    "sidebar-menu": () => import("src/layouts/Menu")
+  },
   data() {
     return {
+      root,
       links1: [
         { icon: "web", text: "Top stories" },
         { icon: "person", text: "For you" },

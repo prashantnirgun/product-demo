@@ -83,7 +83,7 @@
 
 <script>
 export default {
-  date() {
+  data() {
     return {
       search: "",
       showAdvanced: false,
@@ -94,6 +94,19 @@ export default {
       byWebsite: "",
       byDate: "Any time"
     };
+  },
+  methods: {
+    onClear() {
+      this.exactPhrase = "";
+      this.hasWords = "";
+      this.excludeWords = "";
+      this.byWebsite = "";
+      this.byDate = "Any time";
+    },
+    changeDate(option) {
+      this.byDate = option;
+      this.showDateOptions = false;
+    }
   }
 };
 </script>

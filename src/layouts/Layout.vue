@@ -23,7 +23,7 @@
           class="row items-center no-wrap"
         >
           <q-avatar square>
-            <img src="/icons/logo.jpg" />
+            <img src="img/logo.jpg" />
           </q-avatar>
           <span class="q-ml-sm">{{ siteName }}</span>
         </q-toolbar-title>
@@ -287,32 +287,18 @@ export default {
       console.log("site name", process.env.SITE_NAME);
       return process.env.SITE_NAME;
     }
-  },
-  methods: {
-    onClear() {
-      this.exactPhrase = "";
-      this.hasWords = "";
-      this.excludeWords = "";
-      this.byWebsite = "";
-      this.byDate = "Any time";
-    },
-    changeDate(option) {
-      this.byDate = option;
-      this.showDateOptions = false;
-    }
   }
 };
 </script>
-
 <style lang="sass">
 .GNL
   &__toolbar
-    height: 64px
+    height: 60px
   &__toolbar-input
     width: 55%
   &__drawer-item
-    line-height: 24px
-    border-radius: 0 24px 24px 0
+    line-height: 20px
+    border-radius: 0 20px 20px 0
     margin-right: 12px
     .q-item__section--avatar
       .q-icon
@@ -322,7 +308,7 @@ export default {
       letter-spacing: .01785714em
       font-size: .875rem
       font-weight: 500
-      line-height: 1.25rem
+      line-height: 1rem
   &__drawer-footer-link
     color: inherit
     text-decoration: none
