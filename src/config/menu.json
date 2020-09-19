@@ -74,29 +74,47 @@
     ]
   },
   {
-    "label": "Security",
+    "label": "Installation",
     "icon": "security",
     "level": 0.5,
     "children": [
       {
-        "label": "Company",
+        "label": "Requirement",
         "icon": "business",
         "to": "/company",
         "level": 1
       },
       {
-        "label": "User",
+        "label": "MySQL",
+        "icon": "business",
+        "to": "/company",
+        "level": 1
+      },
+      {
+        "label": "Application",
         "icon": "person",
         "to": "/user",
         "level": 1
       },
       {
-        "label": "User Group",
+        "label": "Restore Database",
+        "icon": "group",
+        "to": "/user-group",
+        "level": 1
+      },
+      {
+        "label": "Additional Software",
         "icon": "group",
         "to": "/user-group",
         "level": 1
       }
     ]
+  },
+  {
+    "label": "Version",
+    "icon": "verified",
+    "to": "/version",
+    "level": 1
   },
   {
     "label": "FAQ",

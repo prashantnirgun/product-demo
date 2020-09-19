@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import markdown from "src/markdown/contact.md";
+import markdown from "src/markdown/faq.md";
 
 export default {
   data() {
