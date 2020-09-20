@@ -13,6 +13,21 @@
         tempor incididunt ut labore et dolore magna aliqua.
       </q-card-section>
     </q-card>
+    <div>
+      <q-select
+        label="Select Language"
+        v-model="lang"
+        map-options
+        :options="langs"
+        class="row"
+      />
+      <div class="row q-pt-md">Phrase for Success: {{ $t("success") }}</div>
+      <div class="row q-pt-md">Phrase for Failure: {{ $t("failed") }}</div>
+      <div class="row q-pt-md">Current Language: {{ $i18n.locale }}</div>
+      <div class="row q-pt-md">Currency: {{ $n(100, "currency") }}</div>
+      Currency with functional Component:
+      <i18n-n :value="100" format="currency"></i18n-n>
+    </div>
   </div>
 </template>
 
@@ -21,8 +36,29 @@ export default {
   name: "PageIndex",
   data() {
     return {
-      lists: [1, 2, 3, 4, 5]
+      //lists: [1, 2, 3, 4, 5]
+      lists: [1, 2],
+      langs: [
+        {
+          label: "German",
+          value: "de"
+        },
+        {
+          label: "US English",
+          value: "en-us"
+        }
+      ],
+      lang: this.$i18n.locale
     };
+  },
+  watch: {
+    lang(lang) {
+      this.$i18n.locale = lang.value;
+      // set quasar's language too!!
+      import(`quasar/lang/${lang.value}`).then(language => {
+        this.$q.lang.set(language.default);
+      });
+    }
   }
 };
 </script>
