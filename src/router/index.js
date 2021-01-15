@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import { i18n } from "src/boot/i18n";
+import routes from "./routes";
 
-import routes from './routes'
-
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 /*
  * If not building with SSR mode, you can
@@ -14,7 +14,7 @@ Vue.use(VueRouter)
  * with the Router instance.
  */
 
-export default function (/* { store, ssrContext } */) {
+export default function(/* { store, ssrContext } */) {
   const Router = new VueRouter({
     scrollBehavior: () => ({ x: 0, y: 0 }),
     routes,
@@ -24,7 +24,20 @@ export default function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     mode: process.env.VUE_ROUTER_MODE,
     base: process.env.VUE_ROUTER_BASE
-  })
+  });
 
-  return Router
+  // use beforeEach route guard to set the language
+  Router.beforeEach((to, from, next) => {
+    // use the language from the routing param or default language
+    let language = to.params.lang;
+    if (!language) {
+      language = "en-us";
+    }
+
+    // set the current language for i18n.
+    i18n.locale = language;
+    next();
+  });
+
+  return Router;
 }

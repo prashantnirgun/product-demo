@@ -20,7 +20,7 @@
 | Account Number | 16022000001224    |
 | IFSCI          | HDFC0001602       |
 
-| Payment Gateway | UPI ID         | Scan                                                        |
-| --------------- | -------------- | ----------------------------------------------------------- |
-| PhonePe         | 9324360777@ybl | ![Font](images/payment/phone_pe_qr.png "Phone Pe" =100x100) |
-| Mobikwik        | 9324360777@ybl | ![Font](images/payment/phone_pe_qr.png "Phone Pe" =100x100) |
+| Payment Gateway | UPI ID             | Scan                                                         |
+| --------------- | ------------------ | ------------------------------------------------------------ |
+| PhonePe         | 9324360777@ybl     | ![Font](images/payment/phone_pe_qr.png "Phone Pe" =100x100)  |
+| Mobikwik        | mpay.me/9324360777 | ![Font](images/payment/mobikwik_qr.jpeg "Mobikwik" =100x100) |

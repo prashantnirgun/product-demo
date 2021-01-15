@@ -88,7 +88,8 @@
 
 <script>
 import { fasGlobeAmericas, fasFlask } from "@quasar/extras/fontawesome-v5";
-import root from "src/config/menu.json";
+//import root from "src/config/menu.json";
+import { root } from "src/config/menu";
 
 export default {
   props: ["leftDrawerOpen"],

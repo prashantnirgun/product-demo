@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh lpR fFf" class="bg-grey-1">
+  <q-layout view="lHh lpR lFf" class="bg-grey-1">
     <q-header
       reveal
       elevated
@@ -25,110 +25,42 @@
           <q-avatar square>
             <img src="images/logo.jpg" />
           </q-avatar>
-          <span class="q-ml-sm">{{ siteName }}</span>
+          <!-- <span class="q-ml-sm text-capitalize">{{ siteName }}</span> -->
+          <span class="q-ml-sm text-capitalize">{{ $t("site_name") }}</span>
         </q-toolbar-title>
 
-        <q-space />
-        <search-bar />
-        <!-- <q-input
-          class="GNL__toolbar-input"
-          outlined
-          bg-color="white"
-          rounded
-          dense
-          v-model="search"
-          color="bg-grey-7 shadow-1"
-          placeholder="Search for topics, locations & sources"
-        >
-          <template v-slot:prepend>
-            <q-icon v-if="search === ''" name="search" />
-            <q-icon
-              v-else
-              name="clear"
-              class="cursor-pointer"
-              @click="search = ''"
-            />
-          </template>
-          <template v-slot:append>
-            <q-btn flat dense round aria-label="Menu" icon="arrow_drop_down">
-              <q-menu anchor="bottom right" self="top right">
-                <div class="q-pa-md" style="width: 400px">
-                  <div class="text-body2 text-grey q-mb-md">
-                    Narrow your search results
-                  </div>
-
-                  <div class="row items-center">
-                    <div class="col-3 text-subtitle2 text-grey">
-                      Exact phrase
-                    </div>
-                    <div class="col-9 q-pl-md">
-                      <q-input dense v-model="exactPhrase" />
-                    </div>
-
-                    <div class="col-3 text-subtitle2 text-grey">
-                      Has words
-                    </div>
-                    <div class="col-9 q-pl-md">
-                      <q-input dense v-model="hasWords" />
-                    </div>
-
-                    <div class="col-3 text-subtitle2 text-grey">
-                      Exclude words
-                    </div>
-                    <div class="col-9 q-pl-md">
-                      <q-input dense v-model="excludeWords" />
-                    </div>
-
-                    <div class="col-3 text-subtitle2 text-grey">
-                      Website
-                    </div>
-                    <div class="col-9 q-pl-md">
-                      <q-input dense v-model="byWebsite" />
-                    </div>
-
-                    <div class="col-12 q-pt-lg row justify-end">
-                      <q-btn
-                        flat
-                        dense
-                        no-caps
-                        color="grey-7"
-                        size="md"
-                        style="min-width: 68px;"
-                        label="Search"
-                        v-close-popup
-                      />
-                      <q-btn
-                        flat
-                        dense
-                        no-caps
-                        color="grey-7"
-                        size="md"
-                        style="min-width: 68px;"
-                        @click="onClear"
-                        label="Clear"
-                        v-close-popup
-                      />
-                    </div>
-                  </div>
-                </div>
-              </q-menu>
-            </q-btn>
-          </template>
-        </q-input> -->
+        <!-- <q-space /> -->
+        <!-- <search-bar /> -->
 
         <q-space />
 
         <div class="q-gutter-sm row items-center no-wrap">
-          <q-btn
-            v-if="$q.screen.gt.sm"
-            round
-            dense
-            flat
-            color="text-grey-7"
-            icon="apps"
+          <q-btn-dropdown
+            icon="g_translate"
+            class="text-capitalize"
+            :label="language"
           >
-            <q-tooltip>Google Apps</q-tooltip>
-          </q-btn>
+            <q-list dense>
+              <q-item clickable v-close-popup @click="changeLanguage('en-us')">
+                <q-item-section>
+                  <q-item-label>English</q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable v-close-popup @click="changeLanguage('mr')">
+                <q-item-section>
+                  <q-item-label>मराठी</q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable v-close-popup @click="changeLanguage('hi')">
+                <q-item-section>
+                  <q-item-label>हिंदी</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+
           <q-btn round dense flat color="grey-8" icon="notifications">
             <q-badge color="red" text-color="white" floating>
               2
@@ -145,93 +77,25 @@
       </q-toolbar>
     </q-header>
     <Sidebar model="root" :leftDrawerOpen="leftDrawerOpen" />
-    <!-- <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-white"
-      :width="280"
-    >
-      <q-scroll-area class="fit">
-        <q-list padding class="text-grey-8">
-          <q-item
-            class="GNL__drawer-item"
-            v-ripple
-            v-for="link in links1"
-            :key="link.text"
-            clickable
-          >
-            <q-item-section avatar>
-              <q-icon :name="link.icon" />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>{{ link.text }}</q-item-label>
-            </q-item-section>
-          </q-item>
-
-          <q-separator inset class="q-my-sm" />
-
-          <q-item
-            class="GNL__drawer-item"
-            v-ripple
-            v-for="link in links2"
-            :key="link.text"
-            clickable
-          >
-            <q-item-section avatar>
-              <q-icon :name="link.icon" />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>{{ link.text }}</q-item-label>
-            </q-item-section>
-          </q-item>
-
-          <q-separator inset class="q-my-sm" />
-
-          <q-item
-            class="GNL__drawer-item"
-            v-ripple
-            v-for="link in links3"
-            :key="link.text"
-            clickable
-          >
-            <q-item-section>
-              <q-item-label
-                >{{ link.text }} <q-icon v-if="link.icon" :name="link.icon"
-              /></q-item-label>
-            </q-item-section>
-          </q-item>
-
-          <div class="q-mt-md">
-            <div class="flex flex-center q-gutter-xs">
-              <a
-                class="GNL__drawer-footer-link"
-                href="javascript:void(0)"
-                aria-label="Privacy"
-                >Privacy</a
-              >
-              <span> · </span>
-              <a
-                class="GNL__drawer-footer-link"
-                href="javascript:void(0)"
-                aria-label="Terms"
-                >Terms</a
-              >
-              <span> · </span>
-              <a
-                class="GNL__drawer-footer-link"
-                href="javascript:void(0)"
-                aria-label="About"
-                >About Google</a
-              >
-            </div>
-          </div>
-        </q-list>
-      </q-scroll-area>
-    </q-drawer> -->
 
     <q-page-container>
       <router-view />
+      <!-- place QPageScroller at end of page -->
+      <q-page-scroller
+        position="bottom-left"
+        :scroll-offset="150"
+        :offset="[18, 18]"
+      >
+        <q-btn fab icon="keyboard_arrow_up" color="accent" />
+      </q-page-scroller>
+      <div class="bg-primary text-white q-pa-md" style="overflow: hidden;">
+        <div class="text-subtitle1 text-weight-bold">About</div>
+      </div>
+      <!-- <q-footer reveal elevated>
+        <q-toolbar>
+         
+        </q-toolbar>
+      </q-footer> -->
     </q-page-container>
   </q-layout>
 </template>
@@ -241,51 +105,30 @@ import { fasGlobeAmericas, fasFlask } from "@quasar/extras/fontawesome-v5";
 export default {
   name: "GoogleNewsLayout",
   components: {
-    Sidebar: () => import("./Drawer"),
-    "search-bar": () => import("src/layouts/SearchBar")
+    Sidebar: () => import("./Drawer")
+    //"search-bar": () => import("src/layouts/SearchBar")
   },
   data() {
     return {
-      leftDrawerOpen: false
-      // search: "",
-      // showAdvanced: false,
-      // showDateOptions: false,
-      // exactPhrase: "",
-      // hasWords: "",
-      // excludeWords: "",
-      // byWebsite: "",
-      // byDate: "Any time"
-      //   links1: [
-      //     { icon: "web", text: "Top stories" },
-      //     { icon: "person", text: "For you" },
-      //     { icon: "star_border", text: "Favourites" },
-      //     { icon: "search", text: "Saved searches" }
-      //   ],
-      //   links2: [
-      //     { icon: "flag", text: "Canada" },
-      //     { icon: fasGlobeAmericas, text: "World" },
-      //     { icon: "place", text: "Local" },
-      //     { icon: "domain", text: "Business" },
-      //     { icon: "memory", text: "Technology" },
-      //     { icon: "local_movies", text: "Entertainment" },
-      //     { icon: "directions_bike", text: "Sports" },
-      //     { icon: fasFlask, text: "Science" },
-      //     { icon: "fitness_center", text: "Health " }
-      //   ],
-      //   links3: [
-      //     { icon: "", text: "Language & region" },
-      //     { icon: "", text: "Settings" },
-      //     { icon: "open_in_new", text: "Get the Android app" },
-      //     { icon: "open_in_new", text: "Get the iOS app" },
-      //     { icon: "", text: "Send feedback" },
-      //     { icon: "open_in_new", text: "Help" }
-      //   ]
+      leftDrawerOpen: false,
+      language: "English"
     };
   },
   computed: {
     siteName() {
       console.log("site name", process.env.SITE_NAME);
       return process.env.SITE_NAME;
+    }
+  },
+  methods: {
+    changeLanguage(locale) {
+      this.language = locale;
+      this.$i18n.locale = locale;
+      console.log("new langauge is ", locale, this.$i18n.locale);
+      this.$router.push({
+        params: { lang: locale }
+      });
+      //i18n.locale = locale;
     }
   }
 };

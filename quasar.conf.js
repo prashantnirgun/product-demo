@@ -64,6 +64,13 @@ module.exports = function(/* ctx */) {
           test: /\.(js|vue)$/,
           loader: "eslint-loader",
           exclude: /node_modules/
+
+          // resourceQuery: /blockType=i18n/,
+          // type: "javascript/auto",
+          // use: [
+          //   { loader: "@kazupon/vue-i18n-loader" },
+          //   { loader: "yaml-loader" }
+          // ]
         });
       }
     },

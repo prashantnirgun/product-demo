@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ $t("name") }} {{ $t("surname") }}
     <!-- <q-markdown ref="markdown" :src="markdown" toc /> -->
     <q-markdown ref="markdown" :src="markdown" toc @data="onToc" />
   </div>

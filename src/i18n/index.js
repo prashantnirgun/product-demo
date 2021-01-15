@@ -1,10 +1,14 @@
-import enUS from "./en-us";
+import enUS from "./en";
 import deDE from "./de";
+import mr from "./mr";
+import hi from "./hi";
 import numberFormats from "./number-formats";
 
 const messages = {
-  "en-us": enUS,
-  de: deDE
+  en: enUS,
+  de: deDE,
+  mr,
+  hi
 };
 
 export { messages, numberFormats };
